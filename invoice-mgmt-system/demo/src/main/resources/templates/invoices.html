@@ -1,0 +1,20 @@
+<!-- Display all invoices -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Invoices</title></head>
+<body>
+<h1>Invoices</h1>
+<a th:href="@{/invoices/new}">Create New</a> |
+<a th:href="@{/invoices/export/pdf}">Download PDF</a>
+<table border="1">
+    <tr><th>ID</th><th>Customer</th><th>Amount</th><th>Date</th><th>Action</th></tr>
+    <tr th:each="invoice : ${invoices}">
+        <td th:text="${invoice.id}"></td>
+        <td th:text="${invoice.customerName}"></td>
+        <td th:text="${invoice.amount}"></td>
+        <td th:text="${invoice.date}"></td>
+        <td><a th:href="@{/invoices/delete/{id}(id=${invoice.id})}">Delete</a></td>
+    </tr>
+</table>
+</body>
+</html>
